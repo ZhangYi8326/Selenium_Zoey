@@ -6,14 +6,13 @@
 import shelve
 import time
 
-from seleniumPO.page.base_page import BasePage
+from seleniumPO.pyse.pyselenium import PySelenium
 
 
-class LoginPage(BasePage):
-    base_url = "https://work.weixin.qq.com/wework_admin/loginpage_wx?from=myhome"
-
-    # def __init__(self, driver):
-    #     self.driver = driver
+class LoginPage:
+    def __init__(self, driver):
+        self.driver = driver
+        self.element = PySelenium(self.driver)
 
     def scan(self):
         """

@@ -5,11 +5,14 @@
 # @describe:
 from selenium.webdriver.common.by import By
 from seleniumPO.page.add_member_page import AddMemberPage
-from seleniumPO.page.base_page import BasePage
+from seleniumPO.pyse.pyselenium import PySelenium
 
 
-class MainPage(BasePage):
-    base_url = "https://work.weixin.qq.com/wework_admin/frame"
+class MainPage:
+
+    def __init__(self, driver):
+        self.driver = driver
+        self.element = PySelenium(self.driver)
 
     def goto_add_member(self):
         """

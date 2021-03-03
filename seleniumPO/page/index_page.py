@@ -6,10 +6,15 @@
 from selenium.webdriver.common.by import By
 from seleniumPO.page.login_page import LoginPage
 
-from seleniumPO.page.base_page import BasePage
+from seleniumPO.pyse.pyselenium import PySelenium
 
 
-class IndexPage(BasePage):
+class IndexPage:
+
+    def __init__(self, driver):
+        self.driver = driver
+        self.element = PySelenium(self.driver)
+
     def goto_login(self):
         """
         进入到登录页面
