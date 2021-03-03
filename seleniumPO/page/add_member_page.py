@@ -4,11 +4,14 @@
 # @File    : add_member_page.py
 # @describe:
 from selenium.webdriver.common.by import By
+from seleniumPO.pyse.pyselenium import PySelenium
 
-from seleniumPO.page.base_page import BasePage
 
+class AddMemberPage:
 
-class AddMemberPage(BasePage):
+    def __init__(self, driver):
+        self.driver = driver
+        self.element = PySelenium(self.driver)
 
     def add_member(self, username, account, phone):
         """
@@ -16,13 +19,13 @@ class AddMemberPage(BasePage):
         :return:
         """
         # 输入用户名
-        self.find(By.ID, "username").send_keys(username)
+        self.element.find(By.ID, "username").send_keys(username)
         # 输入账号
-        self.find(By.ID, "memberAdd_acctid").send_keys(account)
+        self.element.find(By.ID, "memberAdd_acctid").send_keys(account)
         # 输入手机号
-        self.find(By.ID, "memberAdd_phone").send_keys(phone)
+        self.element.find(By.ID, "memberAdd_phone").send_keys(phone)
         # 点击保存
-        self.find(By.CSS_SELECTOR, ".js_btn_save").click()
+        self.element.find(By.CSS_SELECTOR, ".js_btn_save").click()
         return True
 
     def get_member(self):
@@ -31,8 +34,8 @@ class AddMemberPage(BasePage):
         :return:
         """
         locator = (By.CSS_SELECTOR, ".member_colRight_memberTable_th_Checkbox")
-        self.wait_for_click(10, locator)
-        eles_list = self.finds(By.CSS_SELECTOR, ".member_colRight_memberTable_td:nth-child(2)")
+        self.element.wait_for_click(10, locator)
+        eles_list = self.element.finds(By.CSS_SELECTOR, ".member_colRight_memberTable_td:nth-child(2)")
         print(eles_list)
         names = []
         for ele in eles_list:
