@@ -55,3 +55,5 @@ class TestContact:
         self.addmember.add_member(username, account, phone)
         names = self.addmember.get_member()
         assert username in names
+
+# 123s
